@@ -59,3 +59,16 @@ class Logger:
                 destination.write('\n')
                 destination.write(s)
                 destination.write('\n')
+
+
+bot_logs = Logger(
+    'INFO',
+    Path.cwd() / 'data' / 'logs',
+    'bot_logs.log',
+    'bot_logs_persistent.log')
+
+chat_logs = Logger(
+    'INFO',
+    Path.cwd() / 'data' / 'logs',
+    'chat_logs.log',
+    'chat_logs_persistent.log')
