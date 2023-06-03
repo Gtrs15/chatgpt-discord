@@ -45,6 +45,7 @@ class Logger:
         self.logger.debug(debug_message)
 
     def clear_log(self):
+        self.add_to_persistent_log()
         with open(self.log_file_path, 'r+') as file:
             file.truncate(0)
 
