@@ -1,5 +1,6 @@
 from pathlib import Path
 import shelve
+from utils.log_manager import chat_logs
 
 
 class ChatStorageBox:
@@ -55,14 +56,14 @@ class ChatStorageBox:
     def user_add(self, message):
         # Add message to current db
         self.write_value_to_db_list({'role': 'user', 'content': message})
-        # TODO: Add to log after creating logging module
+        chat_logs.log_info({'role': 'user', 'content': message})
 
     def assistant_add(self, message):
         # Add assistant message to current db
         self.write_value_to_db_list({'role': 'assistant', 'content': message})
-        # TODO: Add to log after creating logging module
+        chat_logs.log_info({'role': 'assistant', 'content': message})
 
     def system_add(self, message):
         # Add system message to current db
         self.write_value_to_db_list({'role': 'system', 'content': message})
-        # TODO: Add to log after creating logging module
+        chat_logs.log_info({'role': 'system', 'content': message})
