@@ -3,6 +3,7 @@
 import openai
 from open_ai.storage import ChatStorageBox
 from config.keys import openai_api_key
+from utils.log_manager import chat_logs
 
 
 class Chat:
@@ -28,6 +29,12 @@ class Chat:
                 messages=self.storage_box.read())
             self.chat_output = self.completion.choices[0].message.content
             self.storage_box.assistant_add(self.chat_output)
+
+            # Track Token  Usage
+            usage = self.completion.usage
+            chat_logs.log_info(dict(usage))
+            self.total_tokens = usage['total_tokens']
+
             return self.chat_output
         except Exception as e:
             self.chat_output = e
