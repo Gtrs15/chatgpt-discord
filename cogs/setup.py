@@ -18,6 +18,20 @@ class SetupCog(commands.Cog):
     async def on_ready(self):
         bot_logs.log_info("AI Chatbot Bot Online\n")
 
+    # Sends message reply to unknown commands
+    @commands.Cog.listener()
+    async def on_command_error(self, ctx, error):
+        bot_logs.log_info(error)
+        await ctx.send(error)
+
+    # Completes each time a command runs successfully
+    @commands.Cog.listener()
+    async def on_command_completion(self, ctx):
+        full_command_name = ctx.command.qualified_name
+        discord_user = ctx.message.author.name
+        bot_logs.log_info(
+            f'{discord_user} used the {full_command_name} command.')
+
     # PING Check
     @commands.command(
         brief="Response Time in ms",
