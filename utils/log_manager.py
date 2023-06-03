@@ -47,3 +47,14 @@ class Logger:
     def clear_log(self):
         with open(self.log_file_path, 'r+') as file:
             file.truncate(0)
+
+    def add_to_persistent_log(self):
+        # Reads log and copies log data to persistent log
+        # Created so that 'log' can contain recent data
+        # While the persistent log contains all historical data
+        with open(self.log_file_path, 'r') as source:
+            s = source.read()
+            with open(self.persistent_path, 'a') as destination:
+                destination.write('\n')
+                destination.write(s)
+                destination.write('\n')
