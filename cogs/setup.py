@@ -51,6 +51,22 @@ class SetupCog(commands.Cog):
         # # Delete last 20 messages
         await ctx.channel.purge(limit=amount)
 
+    # Reload cog function
+    @commands.command(
+        brief="Reloads all cogs",
+        description="Reloads all cogs, sends name of all reloaded cogs",
+    )
+    async def load(self, ctx):
+        files = [
+            filename
+            for filename in os.listdir(Path.cwd() / "cogs")
+            if filename.endswith(".py")]
+
+        [await self.bot.reload_extension(f"cogs.{filename[:-3]}") for filename in files]
+
+        await ctx.send(f"Reloaded Cogs:\n{', '.join(files)}")
+        bot_logs.log_info(f"Reloaded Cogs: {', '.join(files)}")
+
 
 # # Necessary for each cog
 async def setup(bot):
