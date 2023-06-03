@@ -6,12 +6,7 @@ class Logger:
 
     def __init__(self, log_level, log_folder, log_file_name, persistent_file_name):
 
-        # Create log folder if it does not exist
-        if Path(log_folder).is_dir():
-            pass
-        else:
-            new_folder = Path(log_folder)
-            new_folder.mkdir()
+        self.create_log_folder_if_does_not_exist(log_folder)
 
         self.logger = logging.getLogger(log_file_name)
         self.logger.setLevel(log_level)
@@ -31,6 +26,15 @@ class Logger:
 
         self.log_file_path = str(f'{log_folder}/{log_file_name}')
         self.persistent_path = str(f'{log_folder}/{persistent_file_name}')
+
+    @staticmethod
+    def create_log_folder_if_does_not_exist(log_folder):
+        # Create log folder if it does not exist
+        if Path(log_folder).is_dir():
+            pass
+        else:
+            new_folder = Path(log_folder)
+            new_folder.mkdir()
 
     def log_error(self, error_message):
         self.logger.error(error_message)
