@@ -5,6 +5,7 @@ from discord.ext import commands, tasks
 import os
 from pathlib import Path
 from utils.log_manager import bot_logs
+from utils.str_manipulators import extract_guild_ids
 import subprocess
 
 
