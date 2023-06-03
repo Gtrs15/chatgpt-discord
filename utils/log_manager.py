@@ -43,3 +43,7 @@ class Logger:
 
     def log_debug(self, debug_message):
         self.logger.debug(debug_message)
+
+    def clear_log(self):
+        with open(self.log_file_path, 'r+') as file:
+            file.truncate(0)
