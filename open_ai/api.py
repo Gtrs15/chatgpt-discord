@@ -2,13 +2,13 @@
 # Use 'pip list' to check that you have the correct version installed
 import openai
 from open_ai.storage import ChatStorageBox
-from config.keys import openai_api_key
+from config.keys import OPENAI_API_KEY
 from utils.log_manager import chat_logs
 
 
 class Chat:
     # Set API ley
-    openai.api_key = openai_api_key
+    openai.api_key = OPENAI_API_KEY
 
     def __init__(self):
         self.storage_box = ChatStorageBox()
