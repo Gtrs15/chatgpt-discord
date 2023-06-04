@@ -67,6 +67,15 @@ class SetupCog(commands.Cog):
         await ctx.send(f"Reloaded Cogs:\n{', '.join(files)}")
         bot_logs.log_info(f"Reloaded Cogs: {', '.join(files)}")
 
+    # Restart Bot
+    @commands.command(
+        brief="Runs a shell script that restarts the bot",
+        description="Runs a shell script that restarts the bot using the bash script: gptDiscordRestart.sh",
+    )
+    async def restart(self, ctx):
+        await ctx.send("Wait a second before sending another command.")
+        subprocess.run('./gptDiscordRestart.sh')
+
 
 # # Necessary for each cog
 async def setup(bot):
