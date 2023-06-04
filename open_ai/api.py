@@ -16,7 +16,7 @@ class Chat:
 
     def __init__(self, database_file_path):
         self.storage_box = ChatStorageBox(
-            'data', str(f'{database_file_path}.db'))
+            'data/chats', str(f'{database_file_path}.db'))
 
     def get_response_from_prompt(self, prompt):
         self.storage_box.user_add(prompt)
