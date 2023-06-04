@@ -4,6 +4,7 @@ import openai
 from open_ai.storage import ChatStorageBox
 from config.keys import OPENAI_API_KEY
 from utils.log_manager import chat_logs
+from utils.str_manipulators import split_string
 
 
 class Chat:
@@ -22,10 +23,10 @@ class Chat:
 
         # This will create the completion, and will return self.chat_output
         # self.chat_output will be the error code if the api call fails
-        self.try_to_get_chat_completion()
-        return self.chat_output
+        self.try_to_get_chat_completion(prompt)
+        return split_string(self.chat_output, 1990)
 
-    def try_to_get_chat_completion(self):
+    def try_to_get_chat_completion(self, prompt):
         # Needs to be in try block in case api call fails.
         try:
             self.completion = openai.ChatCompletion.create(
