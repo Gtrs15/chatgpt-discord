@@ -9,6 +9,9 @@ from utils.log_manager import chat_logs
 class Chat:
     # Set API ley
     openai.api_key = OPENAI_API_KEY
+    usage_text = 'Tokens: '
+    prompt = 'Prompt:'
+    response = 'Response:'
 
     def __init__(self):
         self.storage_box = ChatStorageBox()
@@ -34,6 +37,12 @@ class Chat:
             usage = self.completion.usage
             chat_logs.log_info(dict(usage))
             self.total_tokens = usage['total_tokens']
+
+            self.usage_string = "\n".join([
+                f'{self.usage_text}{self.total_tokens}',
+                self.prompt,
+                prompt,
+                self.response])
 
             return self.chat_output
         except Exception as e:
