@@ -1,0 +1,27 @@
+name: Tests
+
+on: 
+#     push:
+#         branches: [ "main" ]
+#         branches: [ "None" ]
+    # Allows action to be ran from github repo
+    workflow_dispatch:
+
+jobs:
+    build-release:
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: Checkout current branch
+              uses: actions/checkout@v3
+
+            - name: Check env vars, and create key
+              run: |
+                echo "Hello"
+                echo "OPENAI_API_KEY = ${{ secrets.OPENAI_API_KEY }}" >> config/keys.py
+                
+            - name: Run tests
+              run: |
+                echo "from utils.test_runner import run_tests" >> run_the_tests.py
+                echo "run_tests()" >> run_the_tests.py
+                python3 run_the_tests.py
