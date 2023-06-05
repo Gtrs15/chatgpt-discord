@@ -1,8 +1,8 @@
 name: Tests
 
 on: 
-#     push:
-#         branches: [ "main" ]
+    push:
+        branches: [ "main" ]
 #         branches: [ "None" ]
     # Allows action to be ran from github repo
     workflow_dispatch:
