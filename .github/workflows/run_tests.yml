@@ -22,7 +22,7 @@ jobs:
             - name: Check env vars, and create key
               run: |
                 echo "Hello"
-                echo OPENAI_API_KEY = ${{ secrets.OPENAI_API_KEY }} >> config/keys.py
+                echo OPENAI_API_KEY = \"sk-${{ secrets.OPENAI_API_KEY }}\" >> config/keys.py
                 
             - name: Run tests
               run: |
