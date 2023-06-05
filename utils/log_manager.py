@@ -29,12 +29,21 @@ class Logger:
 
     @staticmethod
     def create_log_folder_if_does_not_exist(log_folder):
-        # Create log folder if it does not exist
-        if Path(log_folder).is_dir():
-            pass
-        else:
-            new_folder = Path(log_folder)
-            new_folder.mkdir()
+
+        a = str(log_folder).split('/')
+        a.pop()
+        data_folder = "/".join(a)
+
+        def create_folder_if_none_exists(folder_name):
+            # Create folder if it does not exist
+            if Path(folder_name).is_dir():
+                pass
+            else:
+                new_folder = Path(folder_name)
+                new_folder.mkdir()
+
+        create_folder_if_none_exists(data_folder)
+        create_folder_if_none_exists(log_folder)
 
     def log_error(self, error_message):
         self.logger.error(error_message)
