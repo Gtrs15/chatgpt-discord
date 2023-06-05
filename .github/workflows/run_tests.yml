@@ -17,7 +17,7 @@ jobs:
 
             - name: Install Req
               run: |
-                python3 pip install -r config/requirements.txt
+                pip install -r config/requirements.txt
 
             - name: Check env vars, and create key
               run: |
