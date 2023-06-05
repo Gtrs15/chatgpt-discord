@@ -10,6 +10,9 @@ class ChatStorageBox:
         self.verify_database_folder_path(database_folder_path)
         # self.verify_database_file(database_folder_path, database_file_path)
 
+        # For testing
+        self.skip_for_testing(database_folder_path)
+
         self.database_file_path = Path(
             f'{database_folder_path}/{database_file_path}')
         self.database_file_str = f'{database_folder_path}/{database_file_path}'
@@ -56,14 +59,23 @@ class ChatStorageBox:
     def user_add(self, message):
         # Add message to current db
         self.write_value_to_db_list({'role': 'user', 'content': message})
-        chat_logs.log_info({'role': 'user', 'content': message})
+        if self.skip_log == False:
+            chat_logs.log_info({'role': 'user', 'content': message})
 
     def assistant_add(self, message):
         # Add assistant message to current db
         self.write_value_to_db_list({'role': 'assistant', 'content': message})
-        chat_logs.log_info({'role': 'assistant', 'content': message})
+        if self.skip_log == False:
+            chat_logs.log_info({'role': 'assistant', 'content': message})
 
     def system_add(self, message):
         # Add system message to current db
         self.write_value_to_db_list({'role': 'system', 'content': message})
-        chat_logs.log_info({'role': 'system', 'content': message})
+        if self.skip_log == False:
+            chat_logs.log_info({'role': 'system', 'content': message})
+
+    def skip_for_testing(self, database_folder_path):
+        if database_folder_path == 'tests':
+            self.skip_log = True
+        else:
+            self.skip_log = False
