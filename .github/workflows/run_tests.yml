@@ -1,8 +1,8 @@
 name: Tests
 
 on: 
-#     push:
-#         branches: [ "main" ]
+    push:
+        branches: [ "main" ]
 #         branches: [ "None" ]
     # Allows action to be ran from github repo
     workflow_dispatch:
@@ -19,12 +19,10 @@ jobs:
               run: |
                 pip install -r config/requirements.txt
 
-            - name: Check env vars, and create key
-              run: |
-                echo "Hello"
-                echo OPENAI_API_KEY = \"sk-${{ secrets.OPENAI_API_KEY }}\" >> config/keys.py
+            - name: Create key for API test
+              run: echo OPENAI_API_KEY = \"sk-${{ secrets.OPENAI_API_KEY }}\" >> config/keys.py
                 
-            - name: Run tests
+            - name: Run all tests
               run: |
                 echo "from utils.test_runner import run_tests" >> run_the_tests.py
                 echo "run_tests()" >> run_the_tests.py
