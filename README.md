@@ -11,11 +11,11 @@ Use the commmand ```/chat``` to prompt the bot.
 
 ## Other Commands
 
-Type ```.clear``` to clear messages in current channel. (20 by default, can be customized, does not work in DM).
+The ```.clear``` command clears messages in current channel. (20 by default, can be customized, does not work in DM).
 
 The ```.load``` command reloads all cogs (Used when changes are made to cog files).
 
-Type ```.ping``` to check response time, or check that bot is active. 
+Use the ```.ping``` command to check response time, or check that bot is active. 
 
 The ```.restart``` command restarts the bot.
 
