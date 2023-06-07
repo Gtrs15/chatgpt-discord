@@ -21,3 +21,19 @@ The ```.restart``` command restarts the bot.
 
 
 ### For a full list of non-slash commands, use the ```.help``` command.
+
+
+---
+
+# License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+# Acknowledgments
+
+[OpenAI API](https://platform.openai.com/)
+
+[Discord API](https://discord.com/developers/applications)
+
+[Rapptz discord.py library](https://github.com/Rapptz/discord.py)
+
