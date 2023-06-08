@@ -5,7 +5,7 @@ from discord.ext import commands
 from utils.log_manager import bot_logs
 from config.keys import DISCORD_BOT_TOKEN as TOKEN
 from config.keys import APPLICATION_ID as APP_ID
-# from resources.key import GUILD_ID
+# from config.keys import GUILD_ID
 
 
 class ChatBot(commands.Bot):
