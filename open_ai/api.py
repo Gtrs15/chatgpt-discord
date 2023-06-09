@@ -48,5 +48,5 @@ class Chat:
 
             return self.chat_output
         except Exception as e:
-            self.chat_output = e
+            self.chat_output = str(e)
             return self.chat_output
