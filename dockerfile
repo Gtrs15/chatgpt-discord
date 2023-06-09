@@ -40,4 +40,4 @@ CMD ["sh", "-c", "python3 start_bot_in_docker.py $discord_bot_token $application
 # -e openai_api_key=<INSERT_API_KEY_HERE> 
 # <IMAGE ID> 
 
-# (Optional) Add "&" to the end of command to start in the background
+# (Optional) Add -d after "run" to start "detached" (in the background)
