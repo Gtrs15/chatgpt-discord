@@ -9,6 +9,10 @@ def extract_guild_ids(text):
 
 # Splits string so that it does not reach discord char limit
 def split_string(message, max_chars):
+
+    if len(message) < max_chars:
+        return [message]
+
     words = message.split()
     result = []
     current = ''
