@@ -19,7 +19,16 @@ class TestChat(unittest.TestCase):
     def test_api_call_to_get_response(self):
         self.chat.get_response_from_prompt('5+5')
         self.assertIn('10', self.chat.chat_output)
-
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertIn('Response:', self.chat.usage_string)
+        
+        # Usage String
+        if hasattr(self.chat, 'usage_string'):
+            self.assertTrue(True, msg='Usage String Test: Passed')
+        else:
+            self.fail('Usage String Test: Failed')
+            
+        # Total Tokens
+        if hasattr(self.chat, 'total_tokens'):
+            self.assertTrue(True, msg='Total Tokens Test: Passed')
+        else:
+            self.fail('Total Tokens Test: Failed')
