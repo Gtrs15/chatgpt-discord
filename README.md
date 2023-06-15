@@ -88,7 +88,31 @@ Then deploy with the command:
 
 ## Without Docker:
 
-### TODO Add non-docker deployment instructions.
+
+Before starting, I highly reccomend installing docker and using that method.  
+
+That being said, here are the non-docker instructions.
+
+First use git clone to clone the project to your desired location. 
+
+    
+    git clone https://github.com/Gtrs15/chatgpt-discord.git
+
+
+Then install the requirements using the requirements.txt file.
+
+    pip install -r config/requirements.txt
+
+
+(Optional Step) 
+
+To be able to restart the bot from within the bot, use the following command.  If you do not want to use this feature, you can skip this step. 
+
+    chmod +x gptDiscordRestart.sh
+
+Use this last command to start the bot. Replace the items in [brackets] with the actual value. 
+
+    python3 start_bot_in_docker.py [discord_bot_token] [application_id] [openai_api_key]
 
 
 
