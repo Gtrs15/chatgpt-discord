@@ -19,6 +19,7 @@ class TestChat(unittest.TestCase):
     def test_api_call_to_get_response(self):
         self.chat.get_response_from_prompt('5+5')
         self.assertIn('10', self.chat.chat_output)
+        self.assertIn('Response:', self.chat.usage_string)
 
 
 if __name__ == '__main__':
