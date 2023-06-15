@@ -48,7 +48,6 @@ class SlashChat(commands.Cog):
                 response = chat.get_response_from_prompt(prompt)
 
                 [await thread.send(x) for x in response]
-                await thread.send(chat.usage_string)
                 
                 # Replace the "bot is thinking" with string, then delete that message
                 await interaction.followup.send('Check thread for response')
