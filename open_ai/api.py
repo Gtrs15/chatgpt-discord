@@ -47,7 +47,18 @@ class Chat:
                 self.response])
 
             return self.chat_output
+
         except Exception as e:
+            # In case of invalid API key
+            if str(e) == '<empty message>':
+                self.chat_output = 'API Call Failed\nCheck if API key is valid'
+                bot_logs.log_error(self.chat_output)
+                self.usage_string = None
+                self.total_tokens = None
+                return self.chat_output
+            
             self.chat_output = str(e)
             bot_logs.log_error(str(e))
+            self.usage_string = None
+            self.total_tokens = None
             return self.chat_output
