@@ -3,7 +3,7 @@
 import openai
 from open_ai.storage import ChatStorageBox
 from config.keys import OPENAI_API_KEY
-from utils.log_manager import chat_logs
+from utils.log_manager import chat_logs, bot_logs
 from utils.str_manipulators import split_string
 
 
@@ -49,4 +49,5 @@ class Chat:
             return self.chat_output
         except Exception as e:
             self.chat_output = str(e)
+            bot_logs.log_error(str(e))
             return self.chat_output
