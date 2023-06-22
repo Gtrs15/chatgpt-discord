@@ -51,9 +51,9 @@ class SlashChat(commands.Cog):
                 await thread.send(f'Tokens Used: {chat.total_tokens}')
                 
                 # Replace the "bot is thinking" with string, then delete that message
-                await interaction.followup.send('Check thread for response')
-                time.sleep(4)
-                await channel.last_message.delete()
+                last_message = await interaction.followup.send('Check thread for response')
+                time.sleep(5)
+                await last_message.delete()
 
             except Exception as e:
                 bot_logs.log_error(e)
