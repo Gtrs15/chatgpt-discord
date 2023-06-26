@@ -8,7 +8,7 @@ from utils.thread_manager import ThreadManager
 
 
 class DB_Cleanup(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.tm = ThreadManager()
 
@@ -25,7 +25,7 @@ class DB_Cleanup(commands.Cog):
 
         # Creates a list of threads if the thread has been deleted
         deleted_threads = [thread for thread in thread_list
-                           if self.bot.get_channel(thread) == None]
+                           if self.bot.get_channel(int(thread.split(".")[0])) == None]
 
         self.tm.remove_thread_db_files(deleted_threads)
         bot_logs.log_info(f'Deleted Threads: {", ".join(deleted_threads)}')
