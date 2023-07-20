@@ -8,7 +8,7 @@ from utils.str_manipulators import split_string
 
 
 class Chat:
-    # Set API ley
+    # Set API Key
     openai.api_key = OPENAI_API_KEY
     usage_text = 'Tokens: '
     prompt = 'Prompt:'
