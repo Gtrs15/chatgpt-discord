@@ -114,6 +114,10 @@ Use this last command to start the bot. Replace the items in [brackets] with the
 
     python3 start_bot_in_docker.py [discord_bot_token] [application_id] [openai_api_key]
 
+Only the first initial startup needs the 3 arguments.
+
+They will be saved after the first run, so next time just run the command ```python3 start_bot_in_docker.py```
+
 
 
 
